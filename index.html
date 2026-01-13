@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<title>News Card Editor</title>
+<link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+<div class="editor">
+
+  <div id="card">
+    <!-- Watermark -->
+    <img src="assets/logo.png" id="watermark">
+
+    <!-- Image -->
+    <input type="file" id="imgInput" accept="image/*" hidden>
+    <img id="mainImage" class="placeholder" onclick="uploadImage()">
+
+    <!-- Headline -->
+    <div class="headline" contenteditable="true" data-placeholder="এখানে শিরোনাম লিখুন"></div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span>© Protibedon Chitro</span>
+      <span>বিস্তারিত কমেন্টে</span>
+      <span contenteditable="true">০১ জানুয়ারি ২০২৬</span>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button onclick="downloadPNG()">Download</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
