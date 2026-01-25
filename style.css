@@ -4,7 +4,10 @@ body {
     display: flex;
     justify-content: center;
     padding: 20px;
+    font-family: 'Noto Sans Bengali', Arial, sans-serif;
+
 }
+
 
 .editor {
     text-align: center;
@@ -37,7 +40,11 @@ body {
 #mainImage {
     width: 100%;
     margin: 6px 0;
+    height: auto; 
+     max-height: 400px; 
+    display: block;
 }
+
 
 #mainImage.placeholder {
     height: 240px;
