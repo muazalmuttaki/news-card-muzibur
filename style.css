@@ -1,29 +1,40 @@
+/* General Body Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'SolaimanLipi', Arial, sans-serif;
     background: #ffffff;
     display: flex;
     justify-content: center;
     padding: 20px;
-    font-family: 'SolaimanLipi', sans-serif;
-
+    margin: 0;
 }
-
 
 .editor {
     text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Card */
+/* ----------------------------
+   CARD STYLES (Default Desktop)
+   ---------------------------- */
 #card {
     position: relative;
-    width: 400px;
+    width: 400px; /* ডেস্কটপে স্ট্যান্ডার্ড সাইজ */
     min-height: 300px;
-    background: linear-gradient(to bottom, #D9F4CD 0%, #99d380 70%, #acd06a 100%);
+    background: linear-gradient(
+        to bottom,
+        #D9F4CD 0%,
+        #99d380 70%,
+        #acd06a 100%
+    );
     border: 1px solid #c7e9b8;
-    padding: 60px 20px 48px 20px; /* footer-এর জায়গা */
+    padding: 60px 20px 48px 20px; 
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     box-sizing: border-box;
     word-wrap: break-word;
+    overflow: hidden; /* ইমেজের কোনা বের হওয়া রোধ করতে */
 }
 
 /* Watermark */
@@ -36,15 +47,15 @@ body {
     pointer-events: none;
 }
 
-/* Image */
+/* Image Setup */
 #mainImage {
     width: 100%;
     margin: 6px 0;
-    height: auto; 
-     max-height: 400px; 
+    height: auto;
+    max-height: 400px;
     display: block;
+    object-fit: cover;
 }
-
 
 #mainImage.placeholder {
     height: 240px;
@@ -57,7 +68,7 @@ body {
 .headline {
     width: 100%;
     font-size: 22px;
-    font-weight: bold;       /* সব text bold */
+    font-weight: bold;
     text-align: center;
     min-height: 60px;
     line-height: 1.4;
@@ -67,13 +78,15 @@ body {
     border: none;
     outline: none;
     background: transparent;
+    color: #000;
 }
+
 .headline:empty:before {
     content: attr(data-placeholder);
     color: #999;
 }
 
-/* Footer fixed */
+/* Footer Section */
 .footer {
     position: absolute;
     bottom: 2px;
@@ -82,13 +95,13 @@ body {
     background: #559601;
     color: #fff;
     font-size: 12px;
-    padding: 6px  15px;
+    padding: 6px 15px;
     padding-bottom: 10px;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
-    
 }
+
 .footer::after {
     content: "";
     position: absolute;
@@ -99,15 +112,50 @@ body {
     background: #c4161c;
 }
 
-/* Footer contenteditable wrap fix */
 .footer span[contenteditable="true"] {
     white-space: pre-wrap;
     overflow-wrap: break-word;
-    
 }
 
-/* Buttons */
+/* Buttons Styling */
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
 .buttons button {
-    margin-top: 10px;
     padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE (Screen Only)
+   ========================================= */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    #card {
+        width: 100%;      /* মোবাইলে ফুল স্ক্রিন দেখাবে */
+        max-width: 100%;
+        padding: 55px 15px 45px 15px; 
+    }
+
+    .headline {
+        font-size: 20px; 
+    }
+}
+
+/* =========================================
+   DOWNLOAD FIX (JavaScript Support)
+   ডাউনলোডের সময় কার্ড যাতে চিকন না হয়
+   ========================================= */
+#card[style*="width: 400px"] {
+    max-width: none !important;
+    flex-shrink: 0 !important;
 }

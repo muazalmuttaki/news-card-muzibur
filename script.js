@@ -35,22 +35,35 @@ headline.addEventListener('input', () => {
 });
 
 // ----------------------------
-// Download as PNG (Sharp)
+// Download as PNG (Mobile-Safe)
 // ----------------------------
 function downloadPNG() {
     const card = document.getElementById('card');
+    
+    // ১. ডাউনলোডের জন্য সাময়িকভাবে ফিক্সড উইডথ সেট করা
+    // যাতে মোবাইল স্ক্রিন ছোট হলেও কার্ডের রেশিও ঠিক থাকে
+    const originalStyleWidth = card.style.width;
+    card.style.width = '400px'; 
+
     html2canvas(card, {
-        scale: 5,
-        useCORS: true,
-        allowTaint: false
+        scale: 5,             // ছবির কোয়ালিটি অনেক শার্প আসবে
+        useCORS: true,        // অনলাইন ইমেজ সাপোর্ট করবে
+        allowTaint: false,
+        logging: false,
+        backgroundColor: null // ট্রান্সপারেন্সি বজায় রাখবে
     }).then(canvas => {
         const link = document.createElement('a');
         link.download = 'news-card.png';
         link.href = canvas.toDataURL("image/png");
         link.click();
+
+        // ২. ডাউনলোড শেষে আবার আগের (Responsive) অবস্থায় ফিরিয়ে নেওয়া
+        card.style.width = originalStyleWidth;
+    }).catch(err => {
+        console.error("Download Error:", err);
+        card.style.width = originalStyleWidth;
     });
 }
-// html2canvas(card, { scale: 4, useCORS: true }).then(...)
 
 // ----------------------------
 // Dynamic Bengali Date (২৬ জানুয়ারি ২০২৬)
@@ -78,6 +91,6 @@ function updateFooterDate() {
     footerSpan.textContent = `${day} ${month} ${year}`;
 }
 
-// Load date on page load
+// পেজ লোড হলে এবং প্রতি ঘন্টায় তারিখ আপডেট হবে
 updateFooterDate();
-setInterval(updateFooterDate, 60*60*1000); // auto-update
+setInterval(updateFooterDate, 60 * 60 * 1000);
