@@ -16,25 +16,18 @@ body {
     align-items: center;
 }
 
-/* ----------------------------
-   CARD STYLES (Default Desktop)
-   ---------------------------- */
+/* CARD STYLES */
 #card {
     position: relative;
-    width: 400px; /* ডেস্কটপে স্ট্যান্ডার্ড সাইজ */
-    min-height: 300px;
-    background: linear-gradient(
-        to bottom,
-        #D9F4CD 0%,
-        #99d380 70%,
-        #acd06a 100%
-    );
+    width: 420px;
+    min-height: 250px;
+    background: linear-gradient(to bottom, #D9F4CD 0%, #99d380 70%, #acd06a 100%);
     border: 1px solid #c7e9b8;
-    padding: 60px 20px 48px 20px; 
+    padding: 60px 20px 40px 20px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     box-sizing: border-box;
     word-wrap: break-word;
-    overflow: hidden; /* ইমেজের কোনা বের হওয়া রোধ করতে */
+    overflow: hidden;
 }
 
 /* Watermark */
@@ -47,7 +40,7 @@ body {
     pointer-events: none;
 }
 
-/* Image Setup */
+/* Image */
 #mainImage {
     width: 100%;
     margin: 6px 0;
@@ -79,6 +72,9 @@ body {
     outline: none;
     background: transparent;
     color: #000;
+
+    /* Auto height for download fix */
+    height: auto;
 }
 
 .headline:empty:before {
@@ -86,7 +82,7 @@ body {
     color: #999;
 }
 
-/* Footer Section */
+/* Footer */
 .footer {
     position: absolute;
     bottom: 2px;
@@ -95,8 +91,7 @@ body {
     background: #559601;
     color: #fff;
     font-size: 12px;
-    padding: 6px 15px;
-    padding-bottom: 10px;
+    padding: 6px 10px ;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -117,7 +112,7 @@ body {
     overflow-wrap: break-word;
 }
 
-/* Buttons Styling */
+/* Buttons */
 .buttons {
     margin-top: 20px;
     display: flex;
@@ -132,30 +127,13 @@ body {
     background: #f9f9f9;
 }
 
-/* =========================================
-   MOBILE RESPONSIVE (Screen Only)
-   ========================================= */
+/* Mobile Responsive */
 @media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
+    body { padding: 10px; }
     #card {
-        width: 100%;      /* মোবাইলে ফুল স্ক্রিন দেখাবে */
+        width: 100%;
         max-width: 100%;
         padding: 55px 15px 45px 15px; 
     }
-
-    .headline {
-        font-size: 20px; 
-    }
-}
-
-/* =========================================
-   DOWNLOAD FIX (JavaScript Support)
-   ডাউনলোডের সময় কার্ড যাতে চিকন না হয়
-   ========================================= */
-#card[style*="width: 400px"] {
-    max-width: none !important;
-    flex-shrink: 0 !important;
+    .headline { font-size: 20px; }
 }
