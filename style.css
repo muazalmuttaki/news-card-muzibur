@@ -92,7 +92,7 @@ body {
     background: #559601;
     color: #fff;
     font-size: 12px;
-    padding: 6px 10px ;
+    padding: 8px 10px ;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -101,6 +101,7 @@ body {
 .footer::after {
     content: "";
     position: absolute;
+   
     bottom: 0;
     left: 0;
     height: 6px;
