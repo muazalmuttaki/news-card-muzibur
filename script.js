@@ -94,7 +94,8 @@ function updateFooterDate() {
     if (!footerSpan) return;
 
     const today = new Date();
-    const day = toBengaliNumber(today.getDate());
+    const dayNumber = today.getDate().toString().padStart(2, "0");
+    const day = toBengaliNumber(dayNumber);
     const month = bengaliMonths[today.getMonth()];
     const year = toBengaliNumber(today.getFullYear());
 
